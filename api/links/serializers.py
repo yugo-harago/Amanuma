@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import UsefulLink
+from .models import Link
 
-class UsefulLinkSerializer(serializers.ModelSerializer):
+class LinkSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UsefulLink
+        model = Link
         fields = ('id', 'title', 'url', 'description')

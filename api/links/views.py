@@ -1,7 +1,7 @@
 from rest_framework import generics
-from .models import UsefulLink
-from .serializers import UsefulLinkSerializer
+from .models import Link
+from .serializers import LinkSerializer
 
-class UsefulLinkListCreateView(generics.ListCreateAPIView):
-    queryset = UsefulLink.objects.all()
-    serializer_class = UsefulLinkSerializer
+class LinkListCreateView(generics.ListCreateAPIView):
+    queryset = Link.objects.all()
+    serializer_class = LinkSerializer

@@ -1,7 +1,7 @@
 from rest_framework import generics
-from .models import NewsArticle
-from .serializers import NewsArticleSerializer
+from .models import Article
+from .serializers import ArticleSerializer
 
-class NewsArticleListCreateView(generics.ListCreateAPIView):
-    queryset = NewsArticle.objects.all()
-    serializer_class = NewsArticleSerializer
+class ArticleListCreateView(generics.ListCreateAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer

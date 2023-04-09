@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import UsefulLinkListCreateView
+from .views import LinkListCreateView
 
 urlpatterns = [
-    path('links/', UsefulLinkListCreateView.as_view(), name='useful_links'),
+    path('links/', LinkListCreateView.as_view(), name='useful_links'),
 ]
