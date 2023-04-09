@@ -8,6 +8,7 @@ w-100 {
 
 :root {
   --bs-body-bg: #fff8ef;
+  --bs-blue: #0000a3;
 }
 
 full-width {
@@ -57,6 +58,7 @@ b-white {
 :root {
   --bs-nav-link-font-size: 10pt;
   /*--bs-navbar-nav-link-padding-x: 0;*/
+  --bs-primary-rgb: 101,218,236;
 }
 
 .navbar {
@@ -65,10 +67,12 @@ b-white {
 
 .navbar-nav {
   --bs-nav-link-padding-y: 0;
+  --bs-nav-link-hover-color: #f98a6b;
 }
 
 :root {
   --bs-body-font-family: 'M PLUS Rounded 1c', sans-serif;
+  /*--bs-primary: #00d1ff;*/
 }
 
 .news p {
