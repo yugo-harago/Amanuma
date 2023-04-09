@@ -1,30 +1,4 @@
 <template>
-  <nav
-    class="navbar navbar-light navbar-expand-md fixed-top d-flex align-items-center navbar-shrink pt-2"
-    id="mainNav"
-    style="
-      background: linear-gradient(
-        0deg,
-        rgb(255, 231, 182) 0%,
-        rgb(255, 249, 233) 100%
-      );
-    "
-  >
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="/">
-        <span style="display: block; margin-bottom: 10px">天沼教会</span>
-      </a>
-      <button
-        data-bs-toggle="collapse"
-        class="navbar-toggler"
-        data-bs-target="#navcol-1"
-      >
-        <span class="visually-hidden">Toggle navigation</span>
-        <span class="navbar-toggler-icon"> </span>
-      </button>
-    </div>
-  </nav>
-  <div id="header-margin" style="height: 51px"></div>
   <header class="text-center pt-4 w-100">
     <section class="news-section mt-2">
       <div class="container">
@@ -72,7 +46,7 @@
                 >
                   <img
                     class="img-thumbnail img-fluid"
-                    src="assets/img/istockphoto-1177881788-612x612.jpg"
+                    src="@/assets/img/istockphoto-1177881788-612x612.jpg"
                     loading="lazy"
                     width="297"
                     height="297"

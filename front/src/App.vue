@@ -1,6 +1,5 @@
 <template>
   <AppNavbar />
-  <div style="height: 65px"></div>
   <router-view />
 </template>
 
@@ -15,12 +14,11 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 @import './styles/bootstrap.min.css';
-@import './styles/styles.css';
-@import './styles/index.css';
-@import './styles/untitled.css';
-@import './styles/worship.css';
 @import './assets/fonts/line-awesome.min.css';
 @import './assets/fonts/simple-line-icons.min.css';
+</style>
+<style lang="scss">
+@import './styles/styles.scss';
 </style>

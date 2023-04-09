@@ -1,26 +1,19 @@
 <template>
   <nav
     class="navbar navbar-light navbar-expand-md fixed-top text-light d-flex align-items-center navbar-shrink pt-2"
-    id="mainNav"
-    style="background: rgba(129, 129, 129, 0.21)"
   >
     <div class="container">
-      <a
+      <router-link
         class="navbar-brand d-flex justify-content-center align-items-center align-content-center py-2"
-        href="/"
-        style="background: rgba(0, 0, 0, 0.59); padding-right: 16px"
+        to="/"
       >
-        <img
-          class="d-flex mx-2"
-          style="width: 40px; height: 30px; filter: invert(100)"
-          src="@/assets/img/Adventist_Symbol.svg"
-        />
+        <img class="logo d-flex mx-2" src="@/assets/img/Adventist_Symbol.svg" />
         <span
-          class="d-flex justify-content-center align-items-center"
-          style="display: block; /*margin-bottom: 10px;*/"
-          >天沼教会</span
+          class="brand-text d-flex justify-content-center align-items-center"
         >
-      </a>
+          天沼教会
+        </span>
+      </router-link>
       <button
         data-bs-toggle="collapse"
         class="navbar-toggler"
@@ -34,25 +27,22 @@
           <li
             class="nav-item d-flex flex-column justify-content-lg-center align-items-lg-center mx-2"
           >
-            <a
-              class="nav-link active"
-              href="index.html"
-              style="border-bottom: 5px var(--bs-primary) solid"
-            >
+            <router-link class="nav-link" to="/" active-class="active">
               <i
                 class="icon-home d-flex justify-content-center"
-                style="/*font-weight: bold;*/ font-size: 28px"
+                style="font-size: 28px"
               >
               </i>
               <span>ホーム</span>
-            </a>
+            </router-link>
           </li>
           <li
             class="nav-item d-flex flex-column justify-content-center align-items-center mx-2"
           >
-            <a
+            <router-link
               class="nav-link d-flex flex-column justify-content-center align-items-center"
-              href="news"
+              to="news"
+              active-class="active"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +51,7 @@
                 fill="currentColor"
                 viewBox="0 0 16 16"
                 class="bi bi-file-text"
-                style="/*font-weight: bold;*/ font-size: 28px"
+                style="font-size: 28px"
               >
                 <path
                   d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"
@@ -71,14 +61,15 @@
                 ></path>
               </svg>
               <span class="d-block">お知らせ</span>
-            </a>
+            </router-link>
           </li>
           <li
             class="nav-item d-flex flex-column justify-content-center align-items-center mx-2"
           >
-            <a
+            <router-link
               class="nav-link d-flex flex-column justify-content-center align-items-center"
-              href="about-church"
+              to="about-church"
+              active-class="active"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +82,7 @@
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 class="icon icon-tabler icon-tabler-building-church"
-                style="/*font-weight: bold;*/ font-size: 36px"
+                style="font-size: 36px"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <line x1="3" y1="21" x2="21" y2="21"></line>
@@ -101,14 +92,15 @@
                 <path d="M6 21v-7m-2 2l8 -8l8 8m-2 -2v7"></path>
               </svg>
               <span>教会案内</span>
-            </a>
+            </router-link>
           </li>
           <li
             class="nav-item d-flex flex-column justify-content-center align-items-center mx-2"
           >
-            <a
+            <router-link
               class="nav-link d-flex flex-column align-items-center"
-              href="worship"
+              to="worship"
+              active-class="active"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +108,7 @@
                 width="1em"
                 height="1em"
                 fill="currentColor"
-                style="/*font-weight: bold;*/ font-size: 36px"
+                style="font-size: 36px"
               >
                 <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                 <path
@@ -124,14 +116,15 @@
                 ></path>
               </svg>
               <span>礼拝情報</span>
-            </a>
+            </router-link>
           </li>
           <li
             class="nav-item d-flex flex-column justify-content-center align-items-center mx-2"
           >
-            <a
+            <router-link
               class="nav-link d-flex flex-column align-items-center"
-              href="Links.html"
+              to="links"
+              active-class="active"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +133,7 @@
                 fill="currentColor"
                 viewBox="0 0 16 16"
                 class="bi bi-link-45deg"
-                style="/*font-weight: bold;*/ font-size: 37px"
+                style="font-size: 37px"
               >
                 <path
                   d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"
@@ -150,12 +143,13 @@
                 ></path>
               </svg>
               <span>リンク</span>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  <div v-if="this.$route.name !== 'HomeView'" style="height: 57pt"></div>
 </template>
 
 <script>
@@ -164,4 +158,20 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.navbar {
+  background: rgba(129, 129, 129, 0.603);
+}
+.navbar-brand {
+  background: rgba(0, 0, 0, 0.59);
+  padding-right: 16px;
+}
+.logo {
+  width: 40px;
+  height: 30px;
+  filter: invert(100);
+}
+.brand-text {
+  display: block;
+}
+</style>

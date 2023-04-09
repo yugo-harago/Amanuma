@@ -1,5 +1,5 @@
 <template>
-  <div id="header-margin" style="height: 55px"></div>
+  <div id="header-margin"></div>
   <section class="news-section">
     <div class="container">
       <header class="text-center pt-4 w-100">

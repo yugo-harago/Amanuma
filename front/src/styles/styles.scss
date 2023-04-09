@@ -1,0 +1,148 @@
+$header-bg: white;
+$header-text: white;
+$bg: white;
+
+$bs-body-bg: linear-gradient(#f67273, #ffc368 99%), #f98a6b !important;
+$bs-nav-link-font-size: 10pt;
+$bs-primary-rgb: (101, 218, 236);
+$bs-body-font-family: 'M PLUS Rounded 1c', sans-serif;
+
+:root {
+  --bs-body-bg: $bs-body-bg;
+  background: $bs-body-bg;
+}
+
+.navbar {
+  --bs-navbar-color: inherit;
+  --bs-navbar-brand-color: inherit;
+  --bs-navbar-padding-y: 0;
+  --bs-navbar-nav-link-padding-x: 0;
+  font-family: 'M PLUS Rounded 1c';
+}
+
+.navbar-nav {
+  --bs-nav-link-padding-y: 0;
+  --bs-nav-link-hover-color: #f98a6b;
+}
+
+.list-group.list-group-root {
+  border: var(--bs-list-group-border-width) solid
+    var(--bs-list-group-border-color);
+  border-radius: var(--bs-list-group-border-radius);
+}
+
+a.active {
+  border-bottom: 5px var(--bs-primary) solid;
+}
+
+.shadow {
+  box-shadow: 0.5rem 0.5rem 0.2rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.full-width {
+  max-width: none;
+}
+
+.img-thumbnail {
+  object-fit: cover;
+  background-color: #feffcb;
+}
+
+.news {
+  border: 1px solid rgb(194, 194, 194);
+  max-width: 900px;
+  background-color: #fffdfb;
+}
+
+.navbar-nav li {
+  font-weight: initial;
+  .active {
+    font-weight: bold;
+  }
+}
+
+.news p {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.news .img-thumbnail {
+  height: 350px;
+}
+
+.youtube img {
+  height: 250px;
+  border: none;
+  padding: 0;
+}
+
+.ml-2 {
+  margin-left: 0.5rem !important;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 2px black;
+}
+
+.instagram .img-thumbnail {
+  height: 250px;
+  padding: 0;
+  border: 0;
+}
+
+.youtube .col {
+  height: 250px;
+}
+
+.image-description {
+  position: relative;
+  transform: translate(0, -100%);
+  left: 0;
+  display: block;
+  z-index: 2;
+  width: 100%;
+  color: white;
+  background-color: rgba(11, 11, 11, 0.64);
+  text-align: center;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .show > .nav-link {
+  color: inherit;
+}
+
+.sticky-top {
+  top: 80px;
+}
+
+.list-group.list-group-root > .list-group-item:first-child {
+  border-top-width: 0;
+}
+
+.list-group.list-group-root {
+  padding: 0;
+  overflow: hidden;
+  .list-group {
+    margin-bottom: 0;
+  }
+  .list-group-item {
+    border-radius: 0;
+    border-width: 1px 0 0 0;
+  }
+}
+
+.list-group.list-group-root > .list-group {
+  & > .list-group-item {
+    padding-left: 30px;
+  }
+  & > .list-group-item {
+    padding-left: 45px;
+  }
+}
+
+.list-group.list-group-root
+  > .list-group
+  > .list-group
+  .list-group-item
+  .glyphicon {
+  margin-right: 5px;
+}
