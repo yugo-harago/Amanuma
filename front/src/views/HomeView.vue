@@ -1,7 +1,7 @@
 <template>
   <header
     class="text-center d-flex justify-content-center align-items-center pt-5 w-100"
-    :style="`${backgroundImage1} --bs-body-bg: #fff8ef; height: 353pt;`"
+    :style="`${jambotron}`"
   >
     <div
       class="container d-flex flex-column align-items-center"
@@ -148,7 +148,6 @@
       </div>
       <div
         class="row gy-3 row-cols-1 row-cols-md-2 row-cols-lg-3 pb-4 instagram"
-        style="/*background: #ffd18d;*/"
       >
         <div class="col" style="height: 250px">
           <a href="#">
@@ -272,9 +271,8 @@
       </div>
     </div>
   </section>
-  <section></section>
   <section class="py-4 py-xl-5">
-    <div class="container py-4 px-4 shadow" style="background: #fbfff1">
+    <div class="container py-4 px-4 shadow warship-card">
       <div class="row gy-4 gy-md-0">
         <div class="col">
           <div class="row">
@@ -324,7 +322,7 @@
     </div>
   </section>
   <section class="py-4">
-    <div class="container" style="background-color: inherit">
+    <div class="container">
       <div
         class="bg-info border rounded border-0 border-primary overflow-hidden"
       >
@@ -430,12 +428,8 @@
         </div>
       </div>
       <div class="row d-flex justify-content-center mb-4">
-        <div
-          class="col-10 col-sm-9 col-md-8 col-lg-5 p-2 rounded"
-          style="
-            background: linear-gradient(#3ade6a, var(--bs-green)),
-              var(--bs-green);
-          "
+        <a
+          class="col-10 col-sm-9 col-md-8 col-lg-5 p-2 rounded linear-bg spotify-a btn"
         >
           <div class="row rounded">
             <div
@@ -458,17 +452,10 @@
               />
             </div>
           </div>
-        </div>
+        </a>
       </div>
       <div class="row d-xl-flex justify-content-center mb-4">
-        <div
-          class="col-10 col-sm-9 col-md-8 col-lg-5 p-2 rounded"
-          style="
-            border-color: var(--bs-indigo);
-            background: linear-gradient(#a167ff, var(--bs-indigo)),
-              var(--bs-purple);
-          "
-        >
+        <div class="col-10 col-sm-9 col-md-8 col-lg-5 p-2 rounded anchor-a">
           <div class="row rounded">
             <div
               class="col d-lg-flex align-items-lg-center justify-content-xl-end"
@@ -604,12 +591,14 @@
 export default {
   name: 'AppHomeView',
   computed: {
-    backgroundImage1() {
-      const imageUrl = require('@/assets/img/janbotron.jpg')
-      return `background: url(${imageUrl}) center / cover;`
+    jambotron() {
+      const images = import.meta.globEager('@/assets/img/janbotron.jpg')
+      const imageUrl = Object.values(images)[0].default
+      return `background: url(${imageUrl}) center / cover; height: 353pt;`
     },
     backgroundImage2() {
-      const imageUrl = require('@/assets/img/image.jpg')
+      const images = import.meta.globEager('@/assets/img/image.jpg')
+      const imageUrl = Object.values(images)[0].default
       return `background: url(${imageUrl}) center / cover;`
     },
   },

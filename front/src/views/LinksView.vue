@@ -17,7 +17,7 @@
       </div>
     </section>
   </header>
-  <section class="border-top border-bottom pb-4" style="background: #fff8e6">
+  <section class="border-top border-bottom pb-4">
     <div class="container mt-5">
       <div class="row">
         <div class="col">
