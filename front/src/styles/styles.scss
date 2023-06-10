@@ -4,19 +4,18 @@ $bg: #fff8e6;
 
 $worship-card-bg: #fbfff1;
 
-$bs-body-bg: linear-gradient(#f67273, #ffc368 99%), #f98a6b !important;
 $bs-nav-link-font-size: 10pt;
 $bs-primary-rgb: (101, 218, 236);
 $bs-body-font-family: 'M PLUS Rounded 1c', sans-serif;
 
 :root {
-  --bs-body-bg: $bs-body-bg;
-  background: $bs-body-bg;
+  --bs-body-bg: $bg;
+  background: $bg;
 }
 
-section {
-  background-color: $bg;
-}
+// section {
+//   background-color: $bg;
+// }
 
 .warship-card {
   background-color: $worship-card-bg;

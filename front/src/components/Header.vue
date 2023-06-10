@@ -1,6 +1,7 @@
 <template>
   <nav
     class="navbar navbar-light navbar-expand-md fixed-top text-light d-flex align-items-center navbar-shrink pt-2"
+    :class="headerClass"
   >
     <div class="container">
       <router-link
@@ -153,14 +154,35 @@
 </template>
 
 <script>
+import { ref, watch } from 'vue';
+import { useHeaderStore } from '@/store/header';
 export default {
-  name: 'AppNavbar',
+  name: 'Header',
+  setup() {
+    const headerStore = useHeaderStore();
+    let headerClass = ref('navbar');
+
+    watch(() => headerStore.backgroundColor, (newValue) => {
+      headerClass.value = newValue === 'black' ? 'navbar dark' : 'navbar';
+    });
+
+    return {
+      headerClass
+    };
+  },
+  computed: {
+  }
 }
 </script>
 
 <style scoped>
 .navbar {
   background: rgba(129, 129, 129, 0.603);
+  transition: background-color 0.3s ease;
+}
+
+.navbar.dark {
+  background: #000000b8;
 }
 .navbar-brand {
   background: rgba(0, 0, 0, 0.59);

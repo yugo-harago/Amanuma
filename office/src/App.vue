@@ -2,18 +2,18 @@
 
 <template>
   <div id="wrapper">
-    <AppNavbar/>
+    <Header/>
     <router-view />
   </div>
 </template>
 
 <script>
-import AppNavbar from './components/AppNavbar.vue'
+import Header from './components/Header.vue'
 
 export default {
   name: 'App',
   components: {
-    AppNavbar,
+    Header,
   },
 }
 </script>
