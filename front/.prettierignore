@@ -1,0 +1,9 @@
+# Ignore compiled files
+build/
+dist/
+*.min.js
+*.min.css
+
+# Ignore configuration files
+.eslintrc
+.babelrc

@@ -1,12 +1,12 @@
-import { defineStore } from 'pinia';
+import { defineStore } from 'pinia'
 
-export const useHeaderStore = defineStore("header", {
+export const useHeaderStore = defineStore('header', {
   state: () => ({
     backgroundColor: 'black',
   }),
   actions: {
     setBackgroundColor(newColor) {
-      this.backgroundColor = newColor;
+      this.backgroundColor = newColor
     },
   },
-});
+})
