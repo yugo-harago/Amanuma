@@ -10,7 +10,8 @@ img {
   /*box-sizing: inherit;*/
 }
 
-*:before, *:after {
+*:before,
+*:after {
   /*box-sizing: inherit;*/
 }
 
@@ -23,4 +24,3 @@ img {
 :root {
   --bs-bg-opacity: 0.1;
 }
-
