@@ -43,7 +43,7 @@ const routes = [
 
 
 const router = createRouter({
-  history: createWebHistory("/office/"),
+  history: createWebHistory("/office"),
   routes,
 });
 

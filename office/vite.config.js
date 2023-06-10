@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 import replace from "@rollup/plugin-replace";
 
 export default defineConfig({
-  base: "/",
+  base: "/office",
   server: {
     host: "0.0.0.0",
     port: 8120,
