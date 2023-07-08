@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ORIGIN_WHITELIST = [
+#     "http://localhost:8120",
+# ]
+
 
 # Application definition
 
@@ -41,7 +47,8 @@ INSTALLED_APPS = [
     'news',
     'worship',
     'chat',
-    'users'
+    'users',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'office.urls'

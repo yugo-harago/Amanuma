@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AppHomeView from '../views/HomeView.vue'
+
 // import AboutChurchView from '../views/AboutChurchView.vue'
 // import LinksView from '../views/LinksView.vue'
-// import NewsView from '../views/NewsView.vue'
+import NewsView from '../views/NewsView.vue'
 // import WorshipView from '../views/WorshipView.vue'
 
 const routes = [
@@ -29,11 +30,11 @@ const routes = [
   //   name: 'LinksView',
   //   component: LinksView,
   // },
-  // {
-  //   path: '/news',
-  //   name: 'NewsView',
-  //   component: NewsView,
-  // },
+  {
+    path: '/news',
+    name: 'NewsView',
+    component: NewsView,
+  },
   // {
   //   path: '/worship',
   //   name: 'WorshipView',

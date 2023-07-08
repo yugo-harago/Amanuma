@@ -1,8 +1,6 @@
-
-
 <template>
   <div id="wrapper">
-    <Header/>
+    <Header />
     <router-view />
   </div>
 </template>
