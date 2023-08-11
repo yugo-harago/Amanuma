@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import JSONField
 
 
 class Article(models.Model):
@@ -10,9 +11,7 @@ class Article(models.Model):
     date = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    link_1 = models.CharField(max_length=200)
-    link_2 = models.CharField(max_length=200)
-    link_3 = models.CharField(max_length=200)
+    links = JSONField()
 
     def __str__(self):
         return self.title

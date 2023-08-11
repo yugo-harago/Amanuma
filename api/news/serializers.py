@@ -10,8 +10,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ArticleSerializer(serializers.ModelSerializer):
-    # author = UserSerializer(read_only=True)
-    links = serializers.SerializerMethodField()
 
     class Meta:
         model = Article
@@ -19,13 +17,3 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     def get_author(self, obj):
         return "current user"
-
-    def get_links(self, obj):
-        links = []
-        if obj.link_1:
-            links.append({"text": obj.link_1, "url": obj.link_1})
-        if obj.link_2:
-            links.append({"text": obj.link_2, "url": obj.link_2})
-        if obj.link_3:
-            links.append({"text": obj.link_3, "url": obj.link_3})
-        return links

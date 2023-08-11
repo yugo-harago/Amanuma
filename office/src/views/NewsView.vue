@@ -39,7 +39,7 @@
                 <label class="form-label">記事</label>
                 <textarea
                   class="form-control"
-                  v-model="article"
+                  v-model="content"
                   placeholder="記事"
                   rows="5"
                 ></textarea>
@@ -82,12 +82,11 @@
           </template>
           <template v-else>
             <div
-              v-for="news in newsList"
               class="col-12 col-md-12 col-lg-10 col-xl-6"
             >
-              {{ news }}
               <div
-                class="bg-white shadow-sm mb-2"
+                v-for="news in newsList"
+                class="bg-white shadow-sm mb-2 mt-3"
                 style="background: white; padding: 20px"
               >
                 <div class="form-group mb-3">
@@ -104,11 +103,13 @@
                     {{ news.content }}
                   </label>
                 </div>
-                <div v-if="news.link" class="form-group mb-3">
-                  <label class="form-label">
-                    <a :href="news.link.url">{{ news.link.text }}</a>
-                  </label>
-                </div>
+                <template v-for="link in news.links">
+                  <div v-if="link.text" class="form-group mb-3">
+                    <label class="form-label">
+                      <a :href="getLink(link.url)">{{ link.text }}</a>
+                    </label>
+                  </div>
+                </template>
               </div>
             </div>
           </template>
@@ -144,7 +145,7 @@ export default {
     const date = ref('')
     const title = ref('')
     const author = ref('')
-    const article = ref('')
+    const content = ref('')
     const textLink = ref('')
     const link = ref('')
 
@@ -152,7 +153,7 @@ export default {
       date,
       title,
       author,
-      article,
+      content,
       textLink,
       link,
     }
@@ -165,25 +166,24 @@ export default {
   methods: {
     ...mapActions(useNewsStore, ['fecthNewsList', 'postNews']),
     async submit() {
-      const testData = {
-        date: '2023-06-11',
-        title: 'テスト',
-        author: 'ゆうご',
-        content: '初めての記事',
-        links: [{ url: 'www.google.com', text: 'ぐーぐる' }],
-      }
 
-      // await this.postNews({
-      //   date: date.value,
-      //   title: title.value,
-      //   author: author.value,
-      //   article: article.value,
-      //   textLink: textLink.value,
-      //   link: link.value,
-      // });
-      await this.postNews(testData)
+      const news = {
+        date: this.date,
+        title: this.title,
+        author: this.author,
+        content: this.content,
+        links: [{ url: this.link, text: this.textLink }],
+      };
+      await this.postNews(news)
       await this.fecthNewsList(10)
     },
+    getLink(url){
+      if (!url)
+        return
+      if (url.startsWith('https://'))
+        return url
+      return "https://" + url
+    }
   },
   computed: {
     ...mapState(useNewsStore, ['newsList', 'errors']),
