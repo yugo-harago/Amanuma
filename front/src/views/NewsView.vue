@@ -122,7 +122,7 @@ export default {
       if (url.startsWith('https://'))
         return url
       return "https://" + url
-    }
+    },
   },
   computed: {
     ...mapState(useNewsStore, ['newsList', 'errors']),

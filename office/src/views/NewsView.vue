@@ -1,18 +1,16 @@
 <template>
   <div class="d-flex flex-column" id="content-wrapper">
-    <div id="content">
+    <div id="page-top">
       <section
-        class="contact-clean"
-        style="background: rgb(255, 255, 255); padding: 20px"
+        class="contact-clean p-4"
       >
         <div class="row justify-content-center p-5">
-          <div class="col-12 col-md-12 col-lg-10 col-xl-6">
+          <div class="col-12 col-md-12 col-lg-10 col-xl-6 mb-3">
             <form
-              class="bg-white shadow-sm"
+              class="bg-white shadow-sm p-4"
               @submit.prevent="submit"
-              style="background: rgb(248, 248, 249); padding: 20px"
             >
-              <h2 class="text-center" style="margin-bottom: 20px">お知らせ</h2>
+              <h2 class="text-center mb-4">お知らせ</h2>
               <div class="form-group mb-3">
                 <label class="form-label">日にち</label>
                 <input class="form-control" v-model="date" type="date" />
@@ -45,6 +43,12 @@
                 ></textarea>
               </div>
               <div class="form-group mb-3">
+                <label class="form-label">画像</label>
+                <div>
+                  <input type="file" ref="fileInput" />
+                </div>
+              </div>
+              <div class="form-group mb-3">
                 <label class="form-label">リンク</label>
                 <div class="row">
                   <div class="col-5">
@@ -71,10 +75,9 @@
             </form>
           </div>
           <template v-if="!newsList.length">
-            <div class="col-12 col-md-12 col-lg-10 col-xl-6 mt-2">
+            <div class="col-12 col-md-12 col-lg-10 col-xl-6">
               <div
-                class="bg-white shadow-sm mb-2 text-center"
-                style="background: white; padding: 20px"
+                class="bg-white shadow-sm mb-2 text-center p-3"
               >
                 No data
               </div>
@@ -86,8 +89,7 @@
             >
               <div
                 v-for="news in newsList"
-                class="bg-white shadow-sm mb-2 mt-3"
-                style="background: white; padding: 20px"
+                class="bg-white shadow-sm mb-3 p-4"
               >
                 <div class="form-group mb-3">
                   <label class="form-label">{{ news.date }}</label>
@@ -101,6 +103,13 @@
                 <div class="form-group mb-3">
                   <label class="form-label">
                     {{ news.content }}
+                  </label>
+                </div>
+                <div v-if="news.image" class="form-group mb-3">
+                  <label class="form-label">
+                    <img :src="'http://localhost/api' + news.image"
+                    class="img-thumbnail img-fluid"
+                    loading="lazy">
                   </label>
                 </div>
                 <template v-for="link in news.links">
@@ -135,12 +144,11 @@ import { useNewsStore } from '../stores/news'
 
 export default {
   name: 'NewsView',
-  // data: () => {
-  //   return {
-  //     loading: true,
-  //   }
-  // },
-
+  data: () => {
+    return {
+      loading: true,
+    }
+  },
   setup() {
     const date = ref('')
     const title = ref('')
@@ -167,15 +175,30 @@ export default {
     ...mapActions(useNewsStore, ['fecthNewsList', 'postNews']),
     async submit() {
 
-      const news = {
-        date: this.date,
-        title: this.title,
-        author: this.author,
-        content: this.content,
-        links: [{ url: this.link, text: this.textLink }],
-      };
-      await this.postNews(news)
+      const fileInput = this.$refs.fileInput.files[0];
+      const formData = new FormData();
+      formData.append('date', this.date);
+      formData.append('title', this.title);
+      formData.append('author', this.author);
+      formData.append('content', this.content);
+      formData.append('image', fileInput);
+      formData.append('links', JSON.stringify([{ url: this.link, text: this.textLink }]));
+
+      await this.postNews(formData);
       await this.fecthNewsList(10)
+    },
+    async uploadImage() {
+      const fileInput = this.$refs.fileInput.files[0];
+      const formData = new FormData();
+      formData.append('image', fileInput);
+
+      const response = await fetch('http://localhost:8000/upload/', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+      this.imageUrl = `http://localhost:8000/media/${data.image}`;
     },
     getLink(url){
       if (!url)

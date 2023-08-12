@@ -26,3 +26,4 @@ front/*.njsproj
 front/*.sln
 front/*.sw?
 *.pyc
+api/media/images/*

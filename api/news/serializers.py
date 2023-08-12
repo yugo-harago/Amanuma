@@ -13,7 +13,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('id', 'date', 'title', 'author', 'content', 'links')
+        fields = ('id', 'date', 'title', 'author', 'content', 'links', 'image')
 
     def get_author(self, obj):
         return "current user"

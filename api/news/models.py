@@ -11,7 +11,8 @@ class Article(models.Model):
     date = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    links = JSONField()
+    image = models.ImageField(upload_to='images/', null=True)
+    links = JSONField(null=True)
 
     def __str__(self):
         return self.title
