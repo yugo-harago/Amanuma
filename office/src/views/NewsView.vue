@@ -89,36 +89,46 @@
             >
               <div
                 v-for="news in newsList"
-                class="bg-white shadow-sm mb-3 p-4"
+                class="row bg-white shadow-sm mb-3 mx-2 p-4 pb-2"
               >
-                <div class="form-group mb-3">
-                  <label class="form-label">{{ news.date }}</label>
-                </div>
-                <div class="form-group mb-3">
-                  <label class="form-label">{{ news.title }}</label>
-                </div>
-                <div class="form-group mb-3">
-                  <label class="form-label">{{ news.author }}</label>
-                </div>
-                <div class="form-group mb-3">
-                  <label class="form-label">
-                    {{ news.content }}
-                  </label>
-                </div>
-                <div v-if="news.image" class="form-group mb-3">
-                  <label class="form-label">
-                    <img :src="'http://localhost/api' + news.image"
-                    class="img-thumbnail img-fluid"
-                    loading="lazy">
-                  </label>
-                </div>
-                <template v-for="link in news.links">
-                  <div v-if="link.text" class="form-group mb-3">
+                <div class="col-10">
+                  <div class="form-group mb-3">
+                    <label class="form-label">{{ news.date }}</label>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="form-label">{{ news.title }}</label>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="form-label">{{ news.author }}</label>
+                  </div>
+                  <div class="form-group mb-3">
                     <label class="form-label">
-                      <a :href="getLink(link.url)">{{ link.text }}</a>
+                      {{ news.content }}
                     </label>
                   </div>
-                </template>
+                  <div v-if="news.image" class="form-group mb-3">
+                    <label class="form-label">
+                      <img :src="'http://localhost/api' + news.image"
+                      class="img-thumbnail img-fluid"
+                      loading="lazy">
+                    </label>
+                  </div>
+                  <template v-for="link in news.links">
+                    <div v-if="link.text" class="form-group mb-3">
+                      <label class="form-label">
+                        <a :href="getLink(link.url)">{{ link.text }}</a>
+                      </label>
+                    </div>
+                  </template>
+                </div>
+                <div class="col-2 text-end">
+                  <button @click="deleteNewsItem(news.id)" class="btn btn-light">
+                    <svg class="bi bi-trash" xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"></path>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"></path>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </template>
@@ -172,7 +182,7 @@ export default {
     this.loading = false
   },
   methods: {
-    ...mapActions(useNewsStore, ['fecthNewsList', 'postNews']),
+    ...mapActions(useNewsStore, ['fecthNewsList', 'postNews', 'deleteNews']),
     async submit() {
 
       const fileInput = this.$refs.fileInput.files[0];
@@ -187,19 +197,10 @@ export default {
       await this.postNews(formData);
       await this.fecthNewsList(10)
     },
-    async uploadImage() {
-      const fileInput = this.$refs.fileInput.files[0];
-      const formData = new FormData();
-      formData.append('image', fileInput);
-
-      const response = await fetch('http://localhost:8000/upload/', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const data = await response.json();
-      this.imageUrl = `http://localhost:8000/media/${data.image}`;
-    },
+    async deleteNewsItem(id){
+      await this.deleteNews(id);
+      await this.fecthNewsList()
+    }, 
     getLink(url){
       if (!url)
         return

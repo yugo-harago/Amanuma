@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from .models import Article
 from .serializers import ArticleSerializer
 from django.views.decorators.csrf import csrf_exempt
+from django.http import Http404
 
 
 class ArticleListCreateView(generics.ListCreateAPIView):
@@ -36,3 +37,13 @@ class ArticleListCreateView(generics.ListCreateAPIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @csrf_exempt
+    def delete(self, request, *args, **kwargs):
+        try:
+            # Assuming that the ID of the article to be deleted is provided in the URL
+            article = Article.objects.get(pk=kwargs['pk'])
+            article.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Article.DoesNotExist:
+            raise Http404

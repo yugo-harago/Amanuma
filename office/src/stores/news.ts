@@ -30,5 +30,15 @@ export const useNewsStore = defineStore('news', {
           this.errors = err.response.data
         })
     },
+    deleteNews(id: number) {
+      return axios
+        .delete(`http://localhost:8100/api/news/${id}/`)
+        .then(({ data }) => {
+          this.errors = {}
+        })
+        .catch((err) => {
+          this.errors = err.response.data
+        })
+    }
   },
 })
