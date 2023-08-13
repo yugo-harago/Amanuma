@@ -4,7 +4,7 @@ import AppHomeView from '../views/HomeView.vue'
 // import AboutChurchView from '../views/AboutChurchView.vue'
 // import LinksView from '../views/LinksView.vue'
 import NewsView from '../views/NewsView.vue'
-// import WorshipView from '../views/WorshipView.vue'
+import WorshipView from '../views/WorshipView.vue'
 
 const routes = [
   {
@@ -35,11 +35,11 @@ const routes = [
     name: 'NewsView',
     component: NewsView,
   },
-  // {
-  //   path: '/worship',
-  //   name: 'WorshipView',
-  //   component: WorshipView,
-  // },
+  {
+    path: '/worship',
+    name: 'WorshipView',
+    component: WorshipView,
+  },
 ]
 
 const router = createRouter({

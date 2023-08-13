@@ -55,7 +55,7 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="about-church.html"
+          <router-link to="/worship" class="nav-link"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
@@ -75,8 +75,7 @@
               <line x1="10" y1="5" x2="14" y2="5"></line>
               <line x1="12" y1="3" x2="12" y2="8"></line>
               <path d="M6 21v-7m-2 2l8 -8l8 8m-2 -2v7"></path></svg
-            ><span class="mx-1">教会案内</span></a
-          >
+            ><span class="mx-1">教会案内</span></router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="login.html"
