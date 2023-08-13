@@ -29,7 +29,9 @@
           <div
               :class="{'reverse': index % 1 === 0}"
                class="row d-flex mx-auto pb-4 mb-4 news">
-            <div class="col-lg-7 h-100">
+            <div 
+              :class="news.image ? 'col-lg-7' : 'col-lg-12'"
+              class="col-lg-7 h-100">
               <div class="row">
                 <div class="col">
                   <div><span class="badge bg-primary mb-2">{{ news.date }}</span></div>
@@ -66,6 +68,7 @@
               </div>
             </div>
             <div
+              v-if="news.image"
               :class="{'text-center justify-content-md-center order-lg-first my-4': index % 2 === 0}"
               class="col-12 col-lg-5 d-flex justify-content-md-center m-lg-auto pt-4"
             >
@@ -73,14 +76,15 @@
                 <div class="col">
                   <img
                     class="img-thumbnail img-fluid"
-                    src="@/assets/img/turky.jpg"
+                    :src="'http://localhost/api' + news.image"
                     loading="lazy"
                   />
                 </div>
               </div>
             </div>
             <!-- Small Screen -->
-            <div class="col-lg-7 d-lg-none">
+            <div 
+              v-if="news.image" class="col-lg-7 d-lg-none">
               <div class="row">
                 <div class="col">
                   <ul class="list-group mt-2">
