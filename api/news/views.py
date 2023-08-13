@@ -13,14 +13,17 @@ class ArticleListCreateView(generics.ListCreateAPIView):
 
     def get(self, request):
         # get limit from request, use 10 as a default if it's not provided
-        limit = request.GET.get('limit', default=10)
-        all_articles = Article.objects.all()  # get all articles from your database
+        limit = int(request.GET.get('limit', default=10))
+        # get all articles from your database, ordered from new to old
+        all_articles = Article.objects.all().order_by('-created_at')
+
         # paginate them using the limit
         paginator = Paginator(all_articles, limit)
 
         # get the page
         page = request.GET.get('page', default=1)
-        articles = paginator.page(page)
+        # Use get_page to automatically handle invalid page numbers
+        articles = paginator.get_page(page)
 
         # serialize the articles
         serializer = ArticleSerializer(articles, many=True)
