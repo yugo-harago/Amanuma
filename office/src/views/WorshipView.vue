@@ -7,13 +7,14 @@
           <div class="row justify-content-center p-5">
             <div class="col-12 mb-3">
               <form
+                v-for="info in worshipInfos"
                 class="bg-white shadow-sm p-4"
                 @submit.prevent="submit"
               >
-                <h3 class="text-center mb-4">土曜日プログラム</h3>
+                <h3 class="text-center mb-4">{{ info.name }}</h3>
                 <hr>
-                <div class="form-group mb-3">
-                    <label class="form-label">安息日学校</label>
+                <div v-for="event in info.events" class="form-group mb-3">
+                    <label class="form-label">{{ event.name }}</label>
                     <div class="row mb-2 ms-3">
                         <div class="col-12">
                             <div class="d-flex mb-2">
@@ -24,7 +25,7 @@
                                                 <span>開始時間</span>
                                             </div>
                                             <div class="col-9 me-2">
-                                                <input class="form-control" type="time">
+                                                <input class="form-control" type="time" v-model="event.startTime">
                                             </div>
                                         </div>
                                     </div>
@@ -36,149 +37,48 @@
                                                 <span>終了時間</span>
                                             </div>
                                             <div class="col-9 me-2">
-                                                <input class="form-control" type="time">
+                                                <input class="form-control" type="time" v-model="event.endTime">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-1">
-                                    行事
-                                </div>
-                                <div class="col-4">
-                                    <input class="form-control" type="text" placeholder="行事名"/>
-                                </div>
-                                <div class="col-2">
-                                    担当者
-                                </div>
-                                <div class="col-4">
-                                    <input class="form-control" type="text" placeholder="担当者名"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                  <label class="form-label">休憩</label>
-                    <div class="row mb-2 ms-3">
-                        <div class="col-12">
-                            <div class="d-flex mb-2">
+                            <div v-for="(subEvent, index) in event.subEvents" class="d-flex mb-2">
                                 <div class="col-6">
                                     <div class="row">
                                         <div class="d-flex">
                                             <div class="d-flex align-items-center me-2">
-                                                <span>開始時間</span>
+                                                <span>行事/詳細</span>
                                             </div>
                                             <div class="col-9 me-2">
-                                                <input class="form-control" type="time">
+                                                <input class="form-control" type="text" placeholder="行事名" v-model="subEvent.name"/>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="d-flex">
-                                            <div class="d-flex align-items-center me-2">
-                                                <span>終了時間</span>
-                                            </div>
-                                            <div class="col-9 me-2">
-                                                <input class="form-control" type="time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                  <label class="form-label">教会発表</label>
-                    <div class="row mb-2 ms-3">
-                        <div class="col-12">
-                            <div class="d-flex mb-2">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="d-flex">
-                                            <div class="d-flex align-items-center me-2">
-                                                <span>開始時間</span>
-                                            </div>
-                                            <div class="col-9 me-2">
-                                                <input class="form-control" type="time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="d-flex">
-                                            <div class="d-flex align-items-center me-2">
-                                                <span>終了時間</span>
-                                            </div>
-                                            <div class="col-9 me-2">
-                                                <input class="form-control" type="time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group mb-3">
-                    <label class="form-label">礼拝</label>
-                    <div class="row mb-2 ms-3">
-                        <div class="col-12">
-                            <div class="d-flex mb-2">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="d-flex">
-                                            <div class="d-flex align-items-center me-2">
-                                                <span>開始時間</span>
-                                            </div>
-                                            <div class="col-9 me-2">
-                                                <input class="form-control" type="time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="d-flex">
-                                            <div class="d-flex align-items-center me-2">
-                                                <span>終了時間</span>
-                                            </div>
-                                            <div class="col-9 me-2">
-                                                <input class="form-control" type="time">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-2">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="d-flex">
-                                            <div class="d-flex align-items-center me-2">
-                                                <span>行事</span>
-                                            </div>
-                                            <div class="col-9 me-2">
-                                                <input class="form-control" type="text" placeholder="行事名"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
+                                <div class="col-5">
                                     <div class="row">
                                         <div class="d-flex">
                                             <div class="d-flex align-items-center me-2">
                                                 <span>担当者</span>
                                             </div>
                                             <div class="col-9 me-2">
-                                                <input class="form-control" type="text" placeholder="担当者名"/>
+                                                <input class="form-control" type="text" placeholder="担当者名" v-model="subEvent.responsible"/>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-1">
+                                    <div class="row">
+                                        <div class="d-flex">
+                                            <button type="button" @click="removeSubEvent(event, index)" class="btn btn-light">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-11 text-end">
+                                    <button type="button" @click="addSubEvent(event)" class="btn btn-light">+</button>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +91,8 @@
                   </div>
                 </div>
                 <div class="form-group mb-3">
-                  <button class="btn btn-primary" type="submit">保存</button>
+                    <button class="btn btn-primary" type="submit">保存</button>
+                    <button class="ms-4 btn btn-primary" type="button">キャンセル</button>
                 </div>
               </form>
             </div>
@@ -214,6 +115,7 @@
   import { mapActions, mapState } from 'pinia'
   import { ref } from 'vue'
   import { useNewsStore } from '../stores/news'
+  import { reactive } from 'vue';
   
   export default {
     name: 'NewsView',
@@ -223,20 +125,47 @@
       }
     },
     setup() {
-      const date = ref('')
-      const title = ref('')
-      const author = ref('')
-      const content = ref('')
-      const textLink = ref('')
-      const link = ref('')
+  
+      const worshipInfos = reactive([
+        {
+            id: '1',
+            weekday: 'sat',
+            name: '土曜日プログラム',
+            events: [
+                {
+                    name: '安息日学校礼拝',
+                    startTime: "09:00",
+                    endTime: "12:00",
+                    subEvents: [{
+                        name: '司会',
+                        responsible: '司会者さん'
+                    }]
+                },
+                {
+                    name: '休憩',
+                    startTime: "10:40",
+                    endTime: "10:50"
+                },
+                {
+                    name: '教会発表',
+                    startTime: "10:50",
+                    endTime: "11:00"
+                },
+                {
+                    name: '礼拝',
+                    startTime: "09:00",
+                    endTime: "12:00",
+                    subEvents: [{
+                        name: '安息日学校',
+                        responsible: '近藤先生'
+                    }]
+                }
+            ]
+        }
+      ]);
   
       return {
-        date,
-        title,
-        author,
-        content,
-        textLink,
-        link,
+        worshipInfos
       }
     },
     async mounted() {
@@ -248,7 +177,7 @@
       ...mapActions(useNewsStore, ['fecthNewsList', 'postNews', 'deleteNews']),
       async submit() {
   
-        const fileInput = this.$refs.fileInput.files[0];
+        const fileInput = this.$refs.fileInput.files?.[0];
         const formData = new FormData();
         formData.append('date', this.date);
         formData.append('title', this.title);
@@ -264,6 +193,17 @@
         await this.deleteNews(id);
         await this.fecthNewsList()
       }, 
+      addSubEvent(event){
+        if(!event.subEvents){
+            event.subEvents = []
+        }
+        event.subEvents.push({name:'', responsible: ''})
+      },
+      removeSubEvent(event, index){
+        if (event.subEvents && index > -1 && index < event.subEvents.length) {
+            event.subEvents.splice(index, 1);
+        }
+      },
       getLink(url){
         if (!url)
           return
