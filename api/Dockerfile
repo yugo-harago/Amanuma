@@ -14,3 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 # CMD [ "python", "manage.py", "runserver", "8100" ]
 
 EXPOSE 8100
+EXPOSE 3000

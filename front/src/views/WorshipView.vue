@@ -107,46 +107,6 @@
       </div>
     </div>
   </section>
-  <section class="border-top border-bottom pb-4" style="background: #fff8e6">
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class="col">
-              <h3 class="text-xl-center">祈祷会（午前中）のZOOM</h3>
-            </div>
-          </div>
-          <div class="row justify-content-xl-center mt-2">
-            <div class="col-xl-9">
-              <p>
-                毎週水曜日の午前祈祷会もzoomで御参加いただけます。参加希望者は近藤光顕牧師までご連絡下さい。
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="border-top border-bottom pb-4" style="background: #fff8e6">
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col">
-          <div class="row">
-            <div class="col">
-              <h3 class="text-xl-center">日曜講演会のZOOM</h3>
-            </div>
-          </div>
-          <div class="row justify-content-xl-center mt-2">
-            <div class="col-xl-9">
-              <p>
-                ７月よりzoomでの日曜講演会を開始しました。詳しくは牧師部日曜講演会ページをご覧下さい。（ここをクリック）<br /><br />参加を希望される方は下記にご連絡下さい。IDとパスコードをメールでお送りいたします。<br /><br />amanuma.church@gmail.com（教会アドレス）<br />kokenk319@gmail.com（近藤光顕）<br /><br />教会員の方はぜひ御家族やお友達を誘って、関係伝道に用いて下さい。日曜講演会リニューアルの目的は、関係伝道のサポートとケアのためですので、よろしくお願いします。
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 </template>
 <script>
 export default {

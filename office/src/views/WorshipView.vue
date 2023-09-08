@@ -7,7 +7,7 @@
           <div class="row justify-content-center p-5">
             <div class="col-12 mb-3">
               <form
-                v-for="info in worshipInfos"
+                v-for="info in worshipInfo.info"
                 class="bg-white shadow-sm p-4"
                 @submit.prevent="submit"
               >
@@ -114,85 +114,37 @@
   <script>
   import { mapActions, mapState } from 'pinia'
   import { ref } from 'vue'
-  import { useNewsStore } from '../stores/news'
+  import { useWorshipStore } from '../stores/worship'
   import { reactive } from 'vue';
   
   export default {
-    name: 'NewsView',
+    name: 'WorshipView',
     data: () => {
       return {
         loading: true,
       }
     },
-    setup() {
-  
-      const worshipInfos = reactive([
-        {
-            id: '1',
-            weekday: 'sat',
-            name: '土曜日プログラム',
-            events: [
-                {
-                    name: '安息日学校礼拝',
-                    startTime: "09:00",
-                    endTime: "12:00",
-                    subEvents: [{
-                        name: '司会',
-                        responsible: '司会者さん'
-                    }]
-                },
-                {
-                    name: '休憩',
-                    startTime: "10:40",
-                    endTime: "10:50"
-                },
-                {
-                    name: '教会発表',
-                    startTime: "10:50",
-                    endTime: "11:00"
-                },
-                {
-                    name: '礼拝',
-                    startTime: "09:00",
-                    endTime: "12:00",
-                    subEvents: [{
-                        name: '安息日学校',
-                        responsible: '近藤先生'
-                    }]
-                }
-            ]
-        }
-      ]);
-  
-      return {
-        worshipInfos
-      }
-    },
     async mounted() {
       this.loading = true
-      await this.fecthNewsList()
+      await this.fecthWorshipInfo();
       this.loading = false
     },
     methods: {
-      ...mapActions(useNewsStore, ['fecthNewsList', 'postNews', 'deleteNews']),
+      ...mapActions(useWorshipStore, ['fecthWorshipInfo', 'saveWorshipInfo']),
       async submit() {
   
-        const fileInput = this.$refs.fileInput.files?.[0];
-        const formData = new FormData();
-        formData.append('date', this.date);
-        formData.append('title', this.title);
-        formData.append('author', this.author);
-        formData.append('content', this.content);
-        formData.append('image', fileInput);
-        formData.append('links', JSON.stringify([{ url: this.link, text: this.textLink }]));
+        // const fileInput = this.$refs.fileInput.files?.[0];
+        // const formData = new FormData(JSON.stringify(this.worshipInfo));
+        // const formData = new FormData();
+
+        // for (const [key, value] of Object.entries(this.worshipInfo.info)) {
+        //   formData.append(key, value);
+        // }
+
+        // formData.append('info', JSON.stringify(this.worshipInfo));
   
-        await this.postNews(formData);
-        await this.fecthNewsList(10)
+        await this.saveWorshipInfo(this.worshipInfo);
       },
-      async deleteNewsItem(id){
-        await this.deleteNews(id);
-        await this.fecthNewsList()
-      }, 
       addSubEvent(event){
         if(!event.subEvents){
             event.subEvents = []
@@ -213,7 +165,7 @@
       }
     },
     computed: {
-      ...mapState(useNewsStore, ['newsList', 'errors']),
+      ...mapState(useWorshipStore, ['worshipInfo', 'errors']),
     },
   }
   </script>
