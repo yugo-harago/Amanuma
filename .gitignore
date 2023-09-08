@@ -27,3 +27,4 @@ front/*.sln
 front/*.sw?
 *.pyc
 api/media/images/*
+api/db.sqlite3
