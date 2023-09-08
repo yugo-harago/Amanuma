@@ -1,7 +1,8 @@
 
-export interface WorshipSubEvent {
-    eventName: string;
-    responsible: string;
+export interface WorshipInfo {
+    id: string
+    weekday: string
+    events: WorshipMainEvent[]
 }
 
 export interface WorshipMainEvent {
@@ -10,9 +11,13 @@ export interface WorshipMainEvent {
     subEvents?: WorshipSubEvent[];
 }
 
-export interface WorshipInfo {
-    id: string
-    weekday: string
-    events: WorshipMainEvent[]
+export interface WorshipSubEvent {
+    eventName: string;
+    responsible: string;
 }
-  
+
+export interface WorshipInfoHistory {
+    id: string
+    worshipInfo: WorshipInfo;
+    createdDate: string;
+}

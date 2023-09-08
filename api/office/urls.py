@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/', include('links.urls')),
     path('api/', include('chat.urls')),
     path('api/', include('news.urls')),
+    path('api/', include('worship.urls')),
     path('api/', include('users.urls'))
 ]
 if settings.DEBUG:
