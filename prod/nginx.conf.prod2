@@ -1,0 +1,30 @@
+events {
+    worker_connections 1024;
+}
+
+http {
+  include       mime.types;
+  default_type  application/octet-stream;
+
+  sendfile        on;
+  keepalive_timeout  65;
+
+  server {
+    listen 80;
+
+    location /office {
+      alias /office/dist;
+      try_files $uri $uri/ /office/index.html;
+    }
+      
+    location / {
+      alias /front/dist;
+      try_files $uri $uri/ /index.html;
+    }
+
+    location /api {
+      proxy_pass http://host.docker.internal:8100/;
+    }
+
+  }
+}
