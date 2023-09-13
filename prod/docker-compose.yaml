@@ -30,7 +30,7 @@ services:
     volumes:
       - ./nginx.conf.prod:/etc/nginx/nginx.conf:cached
     ports:
-      - "127.0.0.1:80:80"
+      - "80:80"
     depends_on:
       - api
       - front
