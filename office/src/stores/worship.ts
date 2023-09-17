@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import { WorshipInfo, WorshipInfoHistory } from '@/types/news'
+import consts from '@/consts/consts.ts'
 
 interface ModuleState {
   worshipInfo: WorshipInfo,
@@ -17,7 +18,7 @@ export const useWorshipStore = defineStore('worship', {
   actions: {
     fecthWorshipInfo() {
       return axios
-        .get(`http://localhost:8100/api/worship-info/`)
+        .get(`${consts.BASE_URL}/api/worship-info/`)
         .then(({ data }) => {
           if (!data.info) {
             data = 
@@ -67,14 +68,14 @@ export const useWorshipStore = defineStore('worship', {
     },
     fecthWorshipInfoHistory(length: number) {
       return axios
-        .get(`http://localhost:8100/api/worship-infos/?limit=${length ?? '10'}`)
+        .get(`${consts.BASE_URL}/worship-infos/?limit=${length ?? '10'}`)
         .then(({ data }) => {
             this.worshipInfoHistory = data
         })
     },
     saveWorshipInfo(payload: any) {
       return axios
-        .put(`http://localhost:8100/api/worship-info/`, payload)
+        .put(`${consts.BASE_URL}/worship-info/`, payload)
         .then(({ data }) => {
             this.worshipInfo = data
             this.errors = {}

@@ -150,7 +150,7 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import { ref } from 'vue'
-import { useNewsStore } from '../stores/news'
+import { useNewsStore } from '@/stores/news'
 
 export default {
   name: 'NewsView',

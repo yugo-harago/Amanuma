@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import { News } from '@/types/news'
+import consts from '@/consts/consts.ts'
 
 interface ModuleState {
   newsList: News[]
@@ -15,14 +16,14 @@ export const useNewsStore = defineStore('news', {
   actions: {
     fecthNewsList(length: number) {
       return axios
-        .get(`http://localhost:8100/api/news/?limit=${length ?? '10'}`)
+        .get(`${consts.BASE_URL}/news/?limit=${length ?? '10'}`)
         .then(({ data }) => {
           this.newsList = data
         })
     },
     postNews(payload: any) {
       return axios
-        .post(`http://localhost:8100/api/news/`, payload)
+        .post(`${consts.BASE_URL}/news/`, payload)
         .then(({ data }) => {
           this.errors = {}
         })
@@ -32,7 +33,7 @@ export const useNewsStore = defineStore('news', {
     },
     deleteNews(id: number) {
       return axios
-        .delete(`http://localhost:8100/api/news/${id}/`)
+        .delete(`${consts.BASE_URL}/news/${id}/`)
         .then(({ data }) => {
           this.errors = {}
         })
