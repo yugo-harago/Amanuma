@@ -108,7 +108,7 @@
                   </div>
                   <div v-if="news.image" class="form-group mb-3">
                     <label class="form-label">
-                      <img :src="'http://localhost/api' + news.image"
+                      <img :src="consts.IMAGE_URL + news.image"
                       class="img-thumbnail img-fluid"
                       loading="lazy">
                     </label>
@@ -151,6 +151,7 @@
 import { mapActions, mapState } from 'pinia'
 import { ref } from 'vue'
 import { useNewsStore } from '@/stores/news'
+import consts from '@/consts/consts'
 
 export default {
   name: 'NewsView',

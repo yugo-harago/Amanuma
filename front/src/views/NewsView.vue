@@ -76,7 +76,7 @@
                 <div class="col">
                   <img
                     class="img-thumbnail img-fluid"
-                    :src="'http://localhost/api' + news.image"
+                    :src="consts.IMAGE_URL + news.image"
                     loading="lazy"
                   />
                 </div>
@@ -105,6 +105,7 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import { useNewsStore } from '@/stores/news'
+import consts from '@/consts/consts'
 
 export default {
   name: 'NewsView',
