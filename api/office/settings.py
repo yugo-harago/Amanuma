@@ -112,6 +112,7 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
             }
         }
     else:
+        import dj_database_url
         DATABASES = {
             "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
         }
