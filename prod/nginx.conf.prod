@@ -13,7 +13,7 @@ http {
     listen 80;
 
     location /office {
-      proxy_pass http://host.docker.internal:8120/office;
+      proxy_pass http://host.docker.internal:8120/;
       proxy_redirect off;
     }
       
