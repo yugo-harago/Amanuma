@@ -14,7 +14,6 @@ http {
 
     location /office {
       proxy_pass http://host.docker.internal:8120/;
-      proxy_redirect off;
     }
       
     location / {
