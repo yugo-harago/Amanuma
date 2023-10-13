@@ -2,6 +2,7 @@ import path from "path";
 import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 import replace from "@rollup/plugin-replace";
+import vitePluginFaviconsInject from 'vite-plugin-favicons-inject';
 
 export default defineConfig({
   base: "/",
@@ -23,6 +24,7 @@ export default defineConfig({
       "process.browser": true,
       preventAssignment: true,
     }),
+    vitePluginFaviconsInject('./src/assets/img/Adventist_Symbol.svg'),
   ],
   test: {
     environment: "jsdom",
