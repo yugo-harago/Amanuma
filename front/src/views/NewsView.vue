@@ -114,6 +114,11 @@ export default {
       loading: true,
     }
   },
+  setup() {
+    return {
+      consts
+    }
+  },
   async mounted() {
     this.loading = true
     await this.fecthNewsList()

@@ -175,6 +175,7 @@ export default {
       content,
       textLink,
       link,
+      consts
     }
   },
   async mounted() {
