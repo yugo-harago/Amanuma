@@ -591,7 +591,7 @@
 
 <script>
 import { useScrollEvent } from '../events/scrollEvent';
-import { useHeaderStore } from '@/store/header';
+import { useHeaderStore } from '@/stores/header';
 
 export default {
   name: 'AppHomeView',

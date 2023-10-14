@@ -5,7 +5,7 @@
           class="contact-clean p-4"
         >
           <div class="row justify-content-center p-5">
-            <div class="col-12 mb-3">
+            <div v-if="!loading" class="col-12 mb-3">
               <form
                 v-for="info in worshipInfo.info"
                 class="bg-white shadow-sm p-4"

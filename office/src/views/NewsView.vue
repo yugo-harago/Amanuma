@@ -42,12 +42,12 @@
                   rows="5"
                 ></textarea>
               </div>
-              <div class="form-group mb-3">
+              <!-- <div class="form-group mb-3">
                 <label class="form-label">画像</label>
                 <div>
                   <input type="file" ref="fileInput" />
                 </div>
-              </div>
+              </div> -->
               <div class="form-group mb-3">
                 <label class="form-label">リンク</label>
                 <div class="row">
@@ -187,13 +187,13 @@ export default {
     ...mapActions(useNewsStore, ['fecthNewsList', 'postNews', 'deleteNews']),
     async submit() {
 
-      const fileInput = this.$refs.fileInput.files[0];
+      // const fileInput = this.$refs.fileInput.files[0];
       const formData = new FormData();
       formData.append('date', this.date);
       formData.append('title', this.title);
       formData.append('author', this.author);
       formData.append('content', this.content);
-      formData.append('image', fileInput);
+      // formData.append('image', fileInput);
       formData.append('links', JSON.stringify([{ url: this.link, text: this.textLink }]));
 
       await this.postNews(formData);

@@ -73,16 +73,5 @@ export const useWorshipStore = defineStore('worship', {
             this.worshipInfoHistory = data
         })
     },
-    saveWorshipInfo(payload: any) {
-      return axios
-        .put(`${consts.BASE_URL}/worship-info/`, payload)
-        .then(({ data }) => {
-            this.worshipInfo = data
-            this.errors = {}
-        })
-        .catch((err) => {
-            this.errors = err.response.data
-        })
-    },
   },
 })

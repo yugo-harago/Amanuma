@@ -20,6 +20,10 @@ cd office
 npm run dev
 ```
 
+production
+```
+docker-compose --file docker-compose.prod.yaml up --build
+```
 
 To reset:
 delete db.sqlite3 in /api

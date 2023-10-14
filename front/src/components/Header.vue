@@ -155,7 +155,7 @@
 
 <script>
 import { ref, watch } from 'vue';
-import { useHeaderStore } from '@/store/header';
+import { useHeaderStore } from '@/stores/header';
 export default {
   name: 'Header',
   setup() {
