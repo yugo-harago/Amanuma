@@ -4,6 +4,7 @@ import AppHomeView from '../views/HomeView.vue'
 // import AboutChurchView from '../views/AboutChurchView.vue'
 // import LinksView from '../views/LinksView.vue'
 import NewsView from '../views/NewsView.vue'
+import ArticleView from '../views/ArticleView.vue'
 import WorshipView from '../views/WorshipView.vue'
 
 const routes = [
@@ -34,6 +35,11 @@ const routes = [
     path: '/news',
     name: 'NewsView',
     component: NewsView,
+  },
+  {
+    path: '/article',
+    name: 'ArticvleView',
+    component: ArticleView,
   },
   {
     path: '/worship',

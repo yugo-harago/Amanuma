@@ -29,3 +29,4 @@ front/*.sw?
 api/media/images/*
 api/db.sqlite3
 api/.venvs/*
+api/article/migrations

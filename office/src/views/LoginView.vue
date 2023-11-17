@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Amanuma Admin</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="assets/css/Chat.css">
-    <link rel="stylesheet" href="assets/css/Contact-Form-by-Moorcam.css">
-</head>
-
-<body>
+<template>
     <div class="container" style="position:absolute; left:0; right:0; top: 50%; transform: translateY(-50%); -ms-transform: translateY(-50%); -moz-transform: translateY(-50%); -webkit-transform: translateY(-50%); -o-transform: translateY(-50%);">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-9 col-xl-9 col-xxl-7">
@@ -65,8 +52,4 @@
 	});
 </script>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/theme.js"></script>
-</body>
-
-</html>
+</template>

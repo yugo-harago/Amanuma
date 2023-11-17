@@ -36,6 +36,14 @@
         </li>
         <li class="nav-item">
           <router-link to="/news" class="nav-link"
+            ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-megaphone" viewBox="0 0 16 16">
+  <path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-.214c-2.162-1.241-4.49-1.843-6.912-2.083l.405 2.712A1 1 0 0 1 5.51 15.1h-.548a1 1 0 0 1-.916-.599l-1.85-3.49a68.14 68.14 0 0 0-.202-.003A2.014 2.014 0 0 1 0 9V7a2.02 2.02 0 0 1 1.992-2.013 74.663 74.663 0 0 0 2.483-.075c3.043-.154 6.148-.849 8.525-2.199V2.5zm1 0v11a.5.5 0 0 0 1 0v-11a.5.5 0 0 0-1 0zm-1 1.35c-2.344 1.205-5.209 1.842-8 2.033v4.233c.18.01.359.022.537.036 2.568.189 5.093.744 7.463 1.993V3.85zm-9 6.215v-4.13a95.09 95.09 0 0 1-1.992.052A1.02 1.02 0 0 0 1 7v2c0 .55.448 1.002 1.006 1.009A60.49 60.49 0 0 1 4 10.065zm-.657.975 1.609 3.037.01.024h.548l-.002-.014-.443-2.966a68.019 68.019 0 0 0-1.722-.082z"/>
+</svg>
+            <span class="mx-1">お知らせ</span></router-link
+          >
+        </li>
+        <li class="nav-item">
+          <router-link to="/article" class="nav-link"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
@@ -51,7 +59,7 @@
               <path
                 d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"
               ></path></svg
-            ><span class="mx-1">お知らせ</span></router-link
+            ><span class="mx-1">記事</span></router-link
           >
         </li>
         <li class="nav-item">
@@ -96,22 +104,10 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="register.html"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="1em"
-              height="1em"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              class="bi bi-link-45deg"
-              style="font-size: 21px"
-            >
-              <path
-                d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"
-              ></path>
-              <path
-                d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"
-              ></path></svg
-            ><span class="mx-1">リンク</span></a
+            ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-closed" viewBox="0 0 16 16">
+  <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z"/>
+  <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
+</svg><span class="mx-1">部室</span></a
           >
         </li>
         <li class="nav-item">
@@ -157,7 +153,7 @@
 
 <script>
 export default {
-  name: 'Header',
+  name: 'Sidebar',
 }
 </script>
 

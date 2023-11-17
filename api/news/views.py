@@ -1,21 +1,21 @@
 from rest_framework import generics, status
 from django.core.paginator import Paginator
 from rest_framework.response import Response
-from .models import Article
-from .serializers import ArticleSerializer
+from .models import News
+from .serializers import NewsSerializer
 from django.views.decorators.csrf import csrf_exempt
 from django.http import Http404
 
 
-class ArticleListCreateView(generics.ListCreateAPIView):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
+class NewsListCreateView(generics.ListCreateAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
 
     def get(self, request):
         # get limit from request, use 10 as a default if it's not provided
         limit = int(request.GET.get('limit', default=10))
         # get all articles from your database, ordered from new to old
-        all_articles = Article.objects.all().order_by('-created_at')
+        all_articles = News.objects.all().order_by('-created_at')
 
         # paginate them using the limit
         paginator = Paginator(all_articles, limit)
@@ -23,10 +23,10 @@ class ArticleListCreateView(generics.ListCreateAPIView):
         # get the page
         page = request.GET.get('page', default=1)
         # Use get_page to automatically handle invalid page numbers
-        articles = paginator.get_page(page)
+        news_list = paginator.get_page(page)
 
         # serialize the articles
-        serializer = ArticleSerializer(articles, many=True)
+        serializer = NewsSerializer(news_list, many=True)
 
         # return serialized data
         return Response(serializer.data)
@@ -45,8 +45,8 @@ class ArticleListCreateView(generics.ListCreateAPIView):
     def delete(self, request, *args, **kwargs):
         try:
             # Assuming that the ID of the article to be deleted is provided in the URL
-            article = Article.objects.get(pk=kwargs['pk'])
-            article.delete()
+            news = News.objects.get(pk=kwargs['pk'])
+            news.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
-        except Article.DoesNotExist:
+        except News.DoesNotExist:
             raise Http404
