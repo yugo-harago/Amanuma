@@ -6,12 +6,14 @@ import AppHomeView from '../views/HomeView.vue'
 import NewsView from '../views/NewsView.vue'
 import ArticleView from '../views/ArticleView.vue'
 import WorshipView from '../views/WorshipView.vue'
+import LoginView from '../views/LoginView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'HomeView',
     component: AppHomeView,
+    meta: { requiresAuth: true },  // Add this line
   },
   // {
   //   path: '/about',
@@ -46,11 +48,32 @@ const routes = [
     name: 'WorshipView',
     component: WorshipView,
   },
+  {
+    path: '/login',
+    name: 'LoginView',
+    component: LoginView,
+  },
 ]
+
+// const router = new VueRouter({
+//   mode: 'history',
+//   base: process.env.BASE_URL,
+//   routes
+// })
 
 const router = createRouter({
   history: createWebHistory('/office'),
   routes,
+})
+
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem('token')
+
+  if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+    next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router

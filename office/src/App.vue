@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <sidebar />
+    <sidebar v-if="isLoggedIn" />
     <router-view />
   </div>
 </template>
@@ -12,6 +12,14 @@ export default {
   name: 'App',
   components: {
     Sidebar,
+  },
+  data() {
+    return {
+      isLoggedIn: false,
+    };
+  },
+  created() {
+    this.isLoggedIn = !!localStorage.getItem('token');
   },
 }
 </script>
