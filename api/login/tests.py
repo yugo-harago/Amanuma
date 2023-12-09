@@ -16,7 +16,7 @@ class AccountTests(APITestCase):
 
     def test_login(self):
         data = {
-            'username': 'testuser',
+            'email': 'test@example.com',
             'password': 'testpassword'
         }
         response = self.client.post(self.create_url, data)

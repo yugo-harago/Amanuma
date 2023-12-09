@@ -7,14 +7,14 @@ from rest_framework.views import APIView
 
 class LoginView(APIView):
     def post(self, request, *args, **kwargs):
-        username = request.data.get("username")
+        email = request.data.get("email")
         password = request.data.get("password")
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, email=email, password=password)
         if user is not None:
             token, created = Token.objects.get_or_create(user=user)
             return Response({"token": token.key}, status=status.HTTP_200_OK)
         else:
-            return Response({"error": "Invalid username or password"}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": "Invalid email or password"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LogoutView(APIView):

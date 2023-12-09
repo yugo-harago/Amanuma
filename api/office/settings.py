@@ -29,7 +29,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = os.getenv("DEBUG", "FALSE") == "TRUE"
+print(f'Debug mode: {DEBUG}')
 
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
@@ -81,6 +82,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'office.urls'
+
+AUTHENTICATION_BACKENDS = [
+    'login.email_authentication.EmailAuthentication']
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 TEMPLATES = [
     {
@@ -170,3 +176,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY", None)

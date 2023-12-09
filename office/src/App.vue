@@ -1,5 +1,6 @@
 <template>
   <div id="wrapper">
+    <!-- TODO: Make it visible -->
     <sidebar v-if="isLoggedIn" />
     <router-view />
   </div>
@@ -7,6 +8,8 @@
 
 <script>
 import Sidebar from './components/Sidebar.vue'
+import { mapState } from 'pinia'
+import { useUserStore } from '@/stores/user'
 
 export default {
   name: 'App',
@@ -14,12 +17,9 @@ export default {
     Sidebar,
   },
   data() {
-    return {
-      isLoggedIn: false,
-    };
   },
-  created() {
-    this.isLoggedIn = !!localStorage.getItem('token');
+  state: {
+    ...mapState(useUserStore, ['isLoggedIn']),
   },
 }
 </script>

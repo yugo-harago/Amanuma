@@ -11,12 +11,12 @@
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">SDA天沼オフィス</h4>
                                     </div>
-                                    <form class="user">
-                                        <div class="mb-3"><input class="form-control form-control-user" type="email"
-                                                id="email" aria-describedby="emailHelp" placeholder="メール" name="email"
-                                                required=""></div>
-                                        <div class="mb-3"><input class="form-control form-control-user" type="password"
-                                                placeholder="パスワード" name="password" required=""></div>
+                                    <form class="user" @submit.prevent="_login()">
+                                        <div class="mb-3"><input v-model="email" class="form-control form-control-user"
+                                                type="email" id="email" aria-describedby="emailHelp" placeholder="メール"
+                                                name="email" required=""></div>
+                                        <div class="mb-3"><input v-model="password" class="form-control form-control-user"
+                                                type="password" placeholder="パスワード" name="password" required=""></div>
                                         <div class="row mb-3">
                                             <p id="errorMsg" class="text-danger" style="display:none;">Paragraph</p>
                                         </div><button class="btn btn-primary d-block btn-user w-100" id="submitBtn"
@@ -38,27 +38,21 @@
 </template>
   
 <script>
-import axios from 'axios';
+import { mapActions } from 'pinia'
+import { useUserStore } from '@/stores/user'
 
 export default {
     data() {
         return {
-            username: '',
+            email: '',
             password: '',
         };
     },
     methods: {
-        async login() {
-            try {
-                const response = await axios.post('/api/login/', {
-                    username: this.username,
-                    password: this.password,
-                });
-                localStorage.setItem('token', response.data.token);
-                this.$router.push('/');  // Redirect to home page
-            } catch (error) {
-                console.error(error);
-            }
+        ...mapActions(useUserStore, ['login']),
+        async _login() {
+            await this.login({ email: this.email, password: this.password });
+            this.$router.push('/');  // Redirect to home page
         },
     },
 };
