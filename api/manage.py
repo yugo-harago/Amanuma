@@ -24,5 +24,5 @@ if __name__ == '__main__':
 
     if settings.DEBUG:
         import debugpy
-        debugpy.listen(("0.0.0.0", 3000))
+        debugpy.listen(("0.0.0.0", 3001))
         print('Attached!')
