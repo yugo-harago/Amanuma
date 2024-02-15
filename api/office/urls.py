@@ -18,18 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from login.views import LoginView, LogoutView
+from app.login.views import LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/login/', LoginView.as_view(), name='login'),
     path('api/logout/', LogoutView.as_view(), name='logout'),
-    path('api/', include('links.urls')),
-    path('api/', include('chat.urls')),
-    path('api/', include('news.urls')),
-    path('api/', include('article.urls')),
-    path('api/', include('worship.urls')),
-    path('api/', include('users.urls'))
+    path('api/', include('app.links.urls')),
+    path('api/', include('app.chat.urls')),
+    path('api/', include('app.news.urls')),
+    path('api/', include('app.article.urls')),
+    path('api/', include('app.worship.urls')),
+    path('api/', include('app.users.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

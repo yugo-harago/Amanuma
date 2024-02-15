@@ -55,13 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'links',
-    'news',
-    'worship',
-    'chat',
-    'users',
     'corsheaders',
-    'article'
+    'app'
 ]
 
 REST_FRAMEWORK = {
