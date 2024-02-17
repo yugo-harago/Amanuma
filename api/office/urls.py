@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from app.login.views import LoginView, LogoutView
+from app.media.youtube.views import GoogleApiView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +30,8 @@ urlpatterns = [
     path('api/', include('app.news.urls')),
     path('api/', include('app.article.urls')),
     path('api/', include('app.worship.urls')),
-    path('api/', include('app.users.urls'))
+    path('api/', include('app.users.urls')),
+    path('api/youtube', GoogleApiView.as_view()),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,
