@@ -24,10 +24,12 @@ class GoogleApiView(APIView):
         for item in data['items']:
             video_id = item['id']['videoId']
             thumbnail_url = item['snippet']['thumbnails']['high']['url']
+            title = item['snippet']['title']
             YoutubeVideo.objects.update_or_create(
                 video_id=video_id,
                 defaults={'thumbnail_url': thumbnail_url,
-                          'fetched_date': timezone.now()},
+                          'fetched_date': timezone.now(),
+                          'title': title},
             )
 
         return JsonResponse(data, safe=False)
