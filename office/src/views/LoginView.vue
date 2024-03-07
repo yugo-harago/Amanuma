@@ -39,7 +39,7 @@
   
 <script>
 import { mapActions } from 'pinia'
-import { useUserStore } from '@/stores/user'
+import { useSessionStore } from '@/stores/session'
 
 export default {
     data() {
@@ -49,7 +49,7 @@ export default {
         };
     },
     methods: {
-        ...mapActions(useUserStore, ['login']),
+        ...mapActions(useSessionStore, ['login']),
         async _login() {
             await this.login({ email: this.email, password: this.password });
             this.$router.push('/');  // Redirect to home page

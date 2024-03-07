@@ -15,6 +15,7 @@ import os
 import sys
 from django.core.management.utils import get_random_secret_key
 import dj_database_url
+from datetime import timedelta
 
 # https://docs.digitalocean.com/developer-center/deploy-a-django-app-on-app-platform/
 
@@ -61,8 +62,13 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 MIDDLEWARE = [

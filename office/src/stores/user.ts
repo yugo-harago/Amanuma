@@ -16,20 +16,6 @@ export const useUserStore = defineStore('user', {
         }
     },
     actions: {
-      async login(payload: { email: string, password: string }) {
-        try {
-            const response = await axios.post('/api/login/', payload, {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-            // TODO: use HttpOnly cookies
-            localStorage.setItem('token', response.data.token);
-            this.logged = true;
-        } catch (error) {
-            console.error(error);
-        }
-      },
         async checkLogin() {
             try {
                 // const response = await axios.get('/api/check-login/');

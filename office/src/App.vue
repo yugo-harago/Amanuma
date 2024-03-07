@@ -1,7 +1,8 @@
 <template>
   <div id="wrapper">
     <!-- TODO: Make it visible -->
-    <sidebar v-if="isLoggedIn" />
+    <!-- <sidebar v-if="isLoggedIn" /> -->
+    <sidebar />
     <router-view />
   </div>
 </template>
