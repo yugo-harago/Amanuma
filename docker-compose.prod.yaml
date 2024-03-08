@@ -13,11 +13,14 @@ services:
 
   nginx:
     image: nginx:stable
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
     build:
       context: .
       dockerfile: Dockerfile.prod
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - api
     extra_hosts:
