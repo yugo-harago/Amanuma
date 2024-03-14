@@ -1,0 +1,5 @@
+0 12 * * * docker run -it --rm -v "/etc/letsencrypt:/etc/letsencrypt" certbot/certbot renew --quiet && docker-compose -f /root/Amanuma/docker-compose.prod.yaml restart nginx
+
+0 3 * * 0 curl -X PATCH http://localhost/api/youtube >> /var/log/youtube_patch.log 2>&1
+
+@reboot docker-compose -f /root/Amanuma/docker-compose.prod.yaml up
