@@ -4,6 +4,7 @@ import AboutChurchView from '../views/AboutChurchView.vue'
 import LinksView from '../views/LinksView.vue'
 import NewsView from '../views/NewsView.vue'
 import WorshipView from '../views/WorshipView.vue'
+import YoutubeThumbnails from '@/components/YoutubeThumbnails.vue';
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/worship',
     name: 'WorshipView',
     component: WorshipView,
+  },
+  {
+    path: '/latest-video',
+    name: 'YoutubeThumbnails',
+    component: YoutubeThumbnails,
   },
 ]
 

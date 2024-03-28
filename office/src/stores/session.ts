@@ -1,11 +1,12 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
-import { useRouter } from 'vue-router';
+import router from '../router';
 
 export const useSessionStore = defineStore("session", {
     state: () => ({
         token: localStorage.getItem('token'),
         user: undefined,
+        isLogged: !!localStorage.getItem('token'),
         redirectTo: undefined,
         isServiceUnavailable: false,
         isServerError: false
@@ -20,13 +21,14 @@ export const useSessionStore = defineStore("session", {
               });
               // TODO: use HttpOnly cookies
               localStorage.setItem('token', response.data.token);
-              this.logged = true;
+              this.isLogged = true;
           } catch (error) {
               console.error(error);
           }
         },
         logout() {
-            const router = useRouter();
+            this.isLogged = false;
+            localStorage.removeItem('token');
             router.push('/login');
         },
         setLoginState(token: string, user: User) {

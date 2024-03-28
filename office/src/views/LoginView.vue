@@ -48,8 +48,14 @@ export default {
             password: '',
         };
     },
+    setup() {
+        const sessionStore = useSessionStore()
+        return {
+            login: sessionStore.login
+        }
+    },
     methods: {
-        ...mapActions(useSessionStore, ['login']),
+        // ...mapActions(useSessionStore, ['login']),
         async _login() {
             await this.login({ email: this.email, password: this.password });
             this.$router.push('/');  // Redirect to home page

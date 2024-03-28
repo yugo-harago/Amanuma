@@ -1,26 +1,26 @@
 <template>
   <div id="wrapper">
     <!-- TODO: Make it visible -->
-    <!-- <sidebar v-if="isLoggedIn" /> -->
-    <sidebar />
+    <sidebar v-if="isLogged" />
+    <!-- <sidebar /> -->
     <router-view />
   </div>
 </template>
 
 <script>
 import Sidebar from './components/Sidebar.vue'
-import { mapState } from 'pinia'
-import { useUserStore } from '@/stores/user'
+import { useSessionStore } from '@/stores/session'
 
 export default {
   name: 'App',
   components: {
     Sidebar,
   },
-  data() {
-  },
-  state: {
-    ...mapState(useUserStore, ['isLoggedIn']),
+  mounted() {
+    const session = useSessionStore()
+    return {
+      isLogged: session.isLogged
+    }
   },
 }
 </script>
