@@ -33,3 +33,4 @@ docker-compose exec api ./manage.py migrate
 To use with wsl
 
 instal wsl extension and in left corner click to open with wsl instance
+wslview http://localhost:80
