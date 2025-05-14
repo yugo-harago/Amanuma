@@ -1,5 +1,5 @@
 <template>
-  <Header />
+  <Header :fixed-top="$route.name !== 'AboutChurchView'" />
   <router-view />
 </template>
 

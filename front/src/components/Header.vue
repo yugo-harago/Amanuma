@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-light navbar-expand-md fixed-top text-light d-flex align-items-center navbar-shrink pt-2"
-    :class="headerClass">
+  <nav class="navbar navbar-light navbar-expand-md text-light d-flex align-items-center navbar-shrink pt-2 z-99"
+    :class="finalHeaderClass">
     <div class="container">
       <router-link class="navbar-brand d-flex justify-content-center align-items-center align-content-center py-2"
         to="/">
@@ -89,7 +89,16 @@ export default {
       headerClass
     };
   },
+  props: {
+    fixedTop: {
+      type: Boolean,
+      default: false
+    }
+  },
   computed: {
+    finalHeaderClass() {
+      return `${this.headerClass} ${this.fixedTop ? 'fixed-top' : ''}`;
+    }
   }
 }
 </script>
@@ -117,5 +126,9 @@ export default {
 
 .brand-text {
   display: block;
+}
+
+.z-99 {
+  z-index: 99;
 }
 </style>
