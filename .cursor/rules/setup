@@ -1,0 +1,65 @@
+# Project Development Setup Documentation
+
+## Service Architecture
+The project consists of multiple services running in different ways:
+
+### Backend Services (Docker)
+- API Service (Django)
+  - Port: 8100
+  - Debug Port: 3000
+  - Location: ./api
+  - Started via: `make django` or `docker-compose up -d`
+
+### Frontend Services (Local Development)
+- Main Frontend (Vue.js)
+  - Port: 8110
+  - Location: ./front
+  - Started via: `make view` or `cd front && npm run dev`
+
+- Office Frontend
+  - Port: 8120
+  - Location: ./office
+  - Started via: `make view` or `cd office && npm run dev`
+
+### Nginx Reverse Proxy
+- Port: 80
+- Configuration: ./nginx.conf
+- Routes:
+  - /api/* -> http://api:8100/api/*
+  - /office/* -> http://host.docker.internal:8120/office/*
+  - / -> http://host.docker.internal:8110
+
+## Quick Start
+1. Start backend services:
+   ```bash
+   make django
+   ```
+
+2. Start frontend services:
+   ```bash
+   make view
+   ```
+
+3. Access the application:
+   - Main frontend: http://localhost
+   - Office frontend: http://localhost/office
+   - API: http://localhost/api
+
+## Development Workflow
+- Backend changes in ./api are automatically reloaded
+- Frontend changes in ./front and ./office are automatically reloaded
+- Nginx configuration changes require a restart:
+  ```bash
+  docker-compose restart nginx
+  ```
+
+## Troubleshooting
+- If you get 504 Gateway Timeout:
+  1. Ensure all services are running (`make django` and `make view`)
+  2. Check if ports 8110 and 8120 are accessible
+  3. Verify Nginx configuration in nginx.conf
+
+- If frontend services aren't starting:
+  1. Check if ports 8110 and 8120 are available
+  2. Ensure node_modules are installed in both frontend directories
+  3. Check the logs in the respective frontend directories 

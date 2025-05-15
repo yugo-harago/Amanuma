@@ -325,7 +325,7 @@ body {
 }
 
 .section-4 {
-  z-index: 4;
+  z-index: 6;
   position: relative;
   height: 600px;
   view-timeline-name: --signal-section;
@@ -419,15 +419,14 @@ body {
 
 .text-section-5 {
   position: absolute;
-  top: 10%;
-  left: 12%;
-  width: 75%;
+  top: 0px;
+  left: 15%;
+  width: 70%;
   height: 100%;
   color: #fff;
-  font-size: clamp(24px, 4vw, 48px);
+  font-size: 38px;
   z-index: 7;
-  transform: perspective(1000px) rotateX(30deg);
-
+  transform: perspective(1000px) rotateX(40deg);
 }
 
 .text-section-5 p {
@@ -525,15 +524,15 @@ body {
   width: 75%;
   height: 100%;
   color: #fff;
-  font-size: clamp(24px, 4vw, 48px);
+  font-size: 30px;
+  animation: fadeIn linear forwards;
+  animation-timeline: --section-6;
+  animation-range: entry;
 }
 
 .section-6-text p {
   text-align: center;
   background-color: #000000bb;
-  animation: fadeIn linear forwards;
-  animation-timeline: --signal-section;
-  animation-range: entry;
 }
 
 .typewrite {
@@ -625,15 +624,29 @@ body {
   width: 75%;
   height: 100%;
   color: #fff;
-  font-size: clamp(24px, 4vw, 48px);
+  font-size: 38px;
+  animation: fadeIn linear forwards, text-transition linear forwards;
+  animation-timeline: --section-7, --section-7;
+  animation-range: entry, exit;
+}
+
+@keyframes text-transition {
+  exit 0% {
+    opacity: 1;
+  }
+
+  exit 5% {
+    opacity: 0;
+  }
+
+  exit 100% {
+    opacity: 0;
+  }
 }
 
 .section-7-text p {
   text-align: center;
   background-color: #000000bb;
-  animation: fadeIn linear forwards;
-  animation-timeline: --section-7;
-  animation-range: entry;
 }
 
 .church-outside img {
@@ -739,7 +752,7 @@ body {
   left: 12%;
   width: 75%;
   color: #fff;
-  font-size: clamp(24px, 4vw, 48px);
+  font-size: 38px;
 }
 
 .section-8-text p {
